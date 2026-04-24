@@ -12,17 +12,17 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  # app:
-  #   build: .
-  #   container_name: finance_app
-  #   ports:
-  #     - "8080:8080"
-  #   depends_on:
-  #     - db
-  #   environment:
-  #     SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/finance_tracker
-  #     SPRING_DATASOURCE_USERNAME: user
-  #     SPRING_DATASOURCE_PASSWORD: password
+  app:
+     build: .
+     container_name: finance_app
+     ports:
+       - "8080:8080"
+     depends_on:
+       - db
+     environment:
+       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/finance_tracker
+       SPRING_DATASOURCE_USERNAME: user
+       SPRING_DATASOURCE_PASSWORD: password
 
 volumes:
   postgres_data:
