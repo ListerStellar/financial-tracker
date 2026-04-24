@@ -11,6 +11,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CategoryService {
     private final CategoryRepository categoryRepository;
+    private final TransactionService transactionService;
 
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
@@ -18,5 +19,11 @@ public class CategoryService {
 
     public Category createCategory(Category category) {
         return categoryRepository.save(category);
+    }
+
+    @org.springframework.transaction.annotation.Transactional
+    public void deleteCategoryById(Long categoryId) {
+        transactionService.deleteAllByCategoryId(categoryId);
+        categoryRepository.deleteById(categoryId);
     }
 }

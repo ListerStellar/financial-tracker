@@ -22,4 +22,9 @@ public class CategoryController {
     public Category createCategory(@RequestBody Category category) {
         return categoryService.createCategory(category);
     }
+
+    @DeleteMapping("/{categoryId}")
+    public void deleteCategoryById (@PathVariable Long categoryId) {
+        categoryService.deleteCategoryById(categoryId);
+    }
 }
