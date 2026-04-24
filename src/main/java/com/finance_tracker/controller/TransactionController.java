@@ -3,6 +3,7 @@ package com.finance_tracker.controller;
 import com.finance_tracker.dto.TransactionRequest;
 import com.finance_tracker.entity.Transaction;
 import com.finance_tracker.service.TransactionService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,7 +21,7 @@ public class TransactionController {
     }
 
     @PostMapping
-    public Transaction createTransaction(@RequestBody TransactionRequest request) {
+    public Transaction createTransaction(@Valid @RequestBody TransactionRequest request) {
         return transactionService.createTransaction(request);
     }
 
